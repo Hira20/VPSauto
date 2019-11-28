@@ -1,0 +1,64 @@
+#!/bin/bash
+# Made by Hiratechi
+
+MYIP=`ifconfig eth0 | awk 'NR==2 {print $2}'`
+MYIP2="s/xxxxxxxxx/$MYIP/g";
+
+if [[ $USER != 'root' ]]; then
+	echo "Oops! root privileges needed"
+	exit
+fi
+while :
+do
+	clear
+	echo " "
+	echo " "
+	echo "=======================Debian 9======================="
+	echo " "
+	echo "     ~Welcome to Hiratechi's Debian 9 Autoscript~"
+	echo " "
+	echo "=======================Hiratechi======================"
+	echo "=================== TEAM EPIPHANY ===================="
+	echo " "
+	echo "To install this VPN service,"
+	echo "choose your own VPS Provider first"
+	echo " "
+	echo "    [ MENU ]"
+	echo "1. Digital Ocean"
+	echo "2. Linode"
+	echo "3. Cloudsigma"
+	echo "4. Z.COM"
+	echo "5. Exit"
+	read -p "Choose from 1 to 5 : " option2
+	case $option2 in
+		1)
+		clear
+		echo "Starting to install..."
+		sleep 2
+		wget -O deb9hiratechi https://raw.githubusercontent.com/Hira20/VPSauto/master/do && chmod +x deb9hiratechi &&./deb9hiratechi
+		;;
+		2)
+		clear
+		echo "Starting to install..."
+		sleep 2
+		wget -O deb9hiratechi https://raw.githubusercontent.com/Hira20/VPSauto/master/linode && chmod +x deb9hiratechi &&./deb9hiratechi
+		;;
+		3)
+		clear
+		echo "Not Available Yet"
+		sleep 5
+		;;
+		4)
+		clear
+		echo "Not Available Yet"
+		sleep 5
+		;;
+		5)
+		clear
+		echo "Installation was cancelled"
+		sleep 5
+		exit
+		;;
+	esac
+done
+cd

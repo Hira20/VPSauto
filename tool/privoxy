@@ -1,0 +1,105 @@
+#!/bin/sh
+
+# initializing var
+export DEBIAN_FRONTEND=noninteractive
+OS=`uname -m`;
+MYIP=$(wget -qO- ipv4.icanhazip.com);
+MYIP2="s/xxxxxxxxx/$MYIP/g";
+
+# intro
+echo "=======================PRIVOXY SETUP======================="
+echo ""
+echo "Welcome to Privoxy Installation!"
+echo "      - Hiratechi"
+sleep 3
+rm /etc/privoxy/config
+clear
+
+# installation
+echo "=======================PRIVOXY SETUP======================="
+echo ""
+echo "Starting to Install Privoxy..."
+echo ""
+sleep 1
+apt-get install privoxy -y
+echo 1 > /etc/privoxy/config
+cat > /etc/privoxy/config <<-END
+user-manual /usr/share/doc/privoxy/user-manual
+confdir /etc/privoxy
+logdir /var/log/privoxy
+filterfile default.filter
+logfile logfile
+listen-address 0.0.0.0:8020
+listen-address [::1]:8020
+toggle 1
+enable-remote-toggle 0
+enable-remote-http-toggle 0
+enable-edit-actions 0
+enforce-blocks 0
+buffer-limit 4096
+enable-proxy-authentication-forwarding 1
+forwarded-connect-retries 1
+accept-intercepted-requests 1
+allow-cgi-request-crunching 1
+split-large-forms 0
+keep-alive-timeout 5
+tolerate-pipelining 1
+socket-timeout 300
+permit-access 0.0.0.0/0 $MYIP
+END
+clear
+
+# outro
+echo "=======================PRIVOXY SETUP======================="
+echo ""
+echo "Privoxy has been successfully installed!"
+sleep 2
+clear
+
+# finalization
+sysctl -w net.ipv4.ip_forward=1
+iptables -t nat -A POSTROUTING -j MASQUERADE
+iptables-save
+clear
+echo "=======================PRIVOXY SETUP======================="
+echo ""
+echo "Setting Privoxy in 5"
+echo "Don't touch anything...!"
+sleep 1
+clear
+echo "=======================PRIVOXY SETUP======================="
+echo ""
+echo "Setting Privoxy in 4"
+echo "Don't touch anything...!"
+sleep 1
+clear
+echo "=======================PRIVOXY SETUP======================="
+echo ""
+echo "Setting Privoxy in 3"
+echo "Don't touch anything...!"
+sleep 1
+clear
+echo "=======================PRIVOXY SETUP======================="
+echo ""
+echo "Setting Privoxy in 2"
+echo "Don't touch anything...!"
+sleep 1
+clear
+echo "=======================PRIVOXY SETUP======================="
+echo ""
+echo "Setting Privoxy in 1"
+echo "Don't touch anything...!"
+sleep 1
+clear
+echo "=======================PRIVOXY SETUP======================="
+echo ""
+echo "PRIVOXY IS NOW READY!"
+echo ""
+echo "Use port 8020 for your OpenVPN"
+echo ""
+echo "Use port 3128 & 8080 for your other services (For Hiratechi's Deb9 Autoscript only)"
+echo ""
+echo "Rebooting your vps in 10 seconds"
+sleep 10
+history -c
+reboot

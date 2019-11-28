@@ -1,0 +1,324 @@
+#!/bin/bash
+# Created by http://www.vps-murah.net
+# Remodified by reputation
+
+MYIP=`ifconfig eth0 | awk 'NR==2 {print $2}'`
+MYIP2="s/xxxxxxxxx/$MYIP/g";
+
+if [[ $USER != 'root' ]]; then
+	echo "Oops! root privileges needed"
+	exit
+fi
+while :
+do
+	clear
+	echo " "
+	echo " "
+	echo "-----------------------------------------"
+	echo "          Change OpenVPN RP Port  "
+	echo "-----------------------------------------"
+	echo "Change your default port"
+	echo " "
+	echo "    [ MENU ]"
+	echo "1. Change to SQUID Port 3128 (Currently Not Working)"
+	echo "2. Change to SQUID Port 8080"
+	echo "3. Change to Privoxy Port 8020"
+	echo "4. Exit"
+	read -p "Choose from 1 to 4 : " option2
+	case $option2 in
+		1)
+		clear
+		cat > /home/vps/public_html/client.ovpn <<-END
+		# Created by reputation aka Hiratechi
+		# TEAM Epiphany | www.pinoythread.com
+		# Discord Group : https://discord.gg/EHq4XjH
+		# RULES [ NO TORRENT | NO DDOS | NO BULLSHIT PLS ]
+		client
+		dev tun
+		proto tcp
+		remote $MYIP 1153
+		persist-key
+		persist-tun
+		pull
+		resolv-retry infinite
+		nobind
+		user nobody
+		comp-lzo
+		remote-cert-tls server
+		verb 3
+		mute 2
+		connect-retry 3
+		connect-retry-max 3128
+		keepalive 15 45
+		mute-replay-warnings
+		redirect-gateway def1
+		script-security 2
+		route-method exe
+		route-delay 2
+		auth-user-pass
+		cipher none
+		auth none
+		http-proxy-retry
+		# If squid is not working try to install Privoxy in your vps
+		http-proxy $MYIP 3128
+		http-proxy-option CUSTOM-HEADER ""
+		http-proxy-option CUSTOM-HEADER "POST https://viber.com HTTP/1.0"
+		http-proxy-option CUSTOM-HEADER "Connection: Keep-Alive"
+		http-proxy-option CUSTOM-HEADER "Proxy-Connection: Keep-Alive"
+		## Uncomment below if you like to do auto-login in mobile
+		#<auth-user-pass>
+		#your_username
+		#your_password
+		#</auth-user-pass>
+
+		END
+		echo "<ca>" >> /home/vps/public_html/client.ovpn
+		cat /etc/openvpn/ca.crt >> /home/vps/public_html/client.ovpn
+		echo "</ca>" >> /home/vps/public_html/client.ovpn
+
+		cat > /home/vps/public_html/client.ovpn <<-END
+		# Created by reputation aka Hiratechi
+		# TEAM Epiphany | www.pinoythread.com
+		# Discord Group : https://discord.gg/EHq4XjH
+		# RULES [ NO TORRENT | NO DDOS | NO BULLSHIT PLS ]
+		client
+		dev tun
+		proto tcp
+		remote 127.0.0.1 1153
+		route $MYIP 255.255.255.255 net_gateway
+		persist-key
+		persist-tun
+		pull
+		resolv-retry infinite
+		nobind
+		user nobody
+		comp-lzo
+		remote-cert-tls server
+		verb 3
+		mute 2
+		connect-retry 5
+		connect-retry-max 3128
+		mute-replay-warnings
+		redirect-gateway def1
+		script-security 2
+		auth-user-pass
+		cipher none
+		auth none
+		## Uncomment below if you like to do auto-login in mobile
+		#<auth-user-pass>
+		#your_username
+		#your_password
+		#</auth-user-pass>
+		
+		END
+		echo "<ca>" >> /home/vps/public_html/clientssl.ovpn
+		cat /etc/openvpn/ca.crt >> /home/vps/public_html/clientssl.ovpn
+		echo "</ca>" >> /home/vps/public_html/clientssl.ovpn
+		cd /home/vps/public_html
+		rm -f openvpn.zip
+		zip openvpn.zip client.ovpn clientssl.ovpn stunnel.conf
+		clear
+		echo "OVPN files updated! Download your ovpn file from http://$MYIP/#configs"
+		echo "Remote proxy was patched successfully updated in your ovpn from VPS!"
+		sleep 5
+		;;
+		2)
+		clear
+		cat > /home/vps/public_html/client.ovpn <<-END
+		# Created by reputation aka Hiratechi
+		# TEAM Epiphany | www.pinoythread.com
+		# Discord Group : https://discord.gg/EHq4XjH
+		# RULES [ NO TORRENT | NO DDOS | NO BULLSHIT PLS ]
+		client
+		dev tun
+		proto tcp
+		remote $MYIP 1153
+		persist-key
+		persist-tun
+		pull
+		resolv-retry infinite
+		nobind
+		user nobody
+		comp-lzo
+		remote-cert-tls server
+		verb 3
+		mute 2
+		connect-retry 3
+		connect-retry-max 8080
+		keepalive 15 45
+		mute-replay-warnings
+		redirect-gateway def1
+		script-security 2
+		route-method exe
+		route-delay 2
+		auth-user-pass
+		cipher none
+		auth none
+		http-proxy-retry
+		# If squid is not working try to install Privoxy in your vps
+		http-proxy $MYIP 8080
+		http-proxy-option CUSTOM-HEADER ""
+		http-proxy-option CUSTOM-HEADER "POST https://viber.com HTTP/1.0"
+		http-proxy-option CUSTOM-HEADER "Connection: Keep-Alive"
+		http-proxy-option CUSTOM-HEADER "Proxy-Connection: Keep-Alive"
+		## Uncomment below if you like to do auto-login in mobile
+		#<auth-user-pass>
+		#your_username
+		#your_password
+		#</auth-user-pass>
+		
+		END
+		echo "<ca>" >> /home/vps/public_html/client.ovpn
+		cat /etc/openvpn/ca.crt >> /home/vps/public_html/client.ovpn
+		echo "</ca>" >> /home/vps/public_html/client.ovpn
+
+		cat > /home/vps/public_html/clientssl.ovpn <<-END
+		# Created by reputation aka Hiratechi
+		# TEAM Epiphany | www.pinoythread.com
+		# Discord Group : https://discord.gg/EHq4XjH
+		# RULES [ NO TORRENT | NO DDOS | NO BULLSHIT PLS ]
+		client
+		dev tun
+		proto tcp
+		remote 127.0.0.1 1153
+		route $MYIP 255.255.255.255 net_gateway
+		persist-key
+		persist-tun
+		pull
+		resolv-retry infinite
+		nobind
+		user nobody
+		comp-lzo
+		remote-cert-tls server
+		verb 3
+		mute 2
+		connect-retry 5
+		connect-retry-max 8080
+		mute-replay-warnings
+		redirect-gateway def1
+		script-security 2
+		auth-user-pass
+		cipher none
+		auth none
+		## Uncomment below if you like to do auto-login in mobile
+		#<auth-user-pass>
+		#your_username
+		#your_password
+		#</auth-user-pass>
+		
+		END
+		echo "<ca>" >> /home/vps/public_html/clientssl.ovpn
+		cat /etc/openvpn/ca.crt >> /home/vps/public_html/clientssl.ovpn
+		echo "</ca>" >> /home/vps/public_html/clientssl.ovpn
+		cd /home/vps/public_html
+		rm -f openvpn.zip
+		zip openvpn.zip client.ovpn clientssl.ovpn stunnel.conf
+		clear
+		echo "OVPN files updated! Download your ovpn file from http://$MYIP/#configs"
+		echo "Remote proxy was patched successfully updated in your ovpn from VPS!"
+		sleep 5
+		;;
+		3)
+		clear
+		cat > /home/vps/public_html/client.ovpn <<-END
+		# Created by reputation aka Hiratechi
+		# TEAM Epiphany | www.pinoythread.com
+		# Discord Group : https://discord.gg/EHq4XjH
+		# RULES [ NO TORRENT | NO DDOS | NO BULLSHIT PLS ]
+		client
+		dev tun
+		proto tcp
+		remote $MYIP 1153
+		persist-key
+		persist-tun
+		pull
+		resolv-retry infinite
+		nobind
+		user nobody
+		comp-lzo
+		remote-cert-tls server
+		verb 3
+		mute 2
+		connect-retry 3
+		connect-retry-max 8020
+		keepalive 15 45
+		mute-replay-warnings
+		redirect-gateway def1
+		script-security 2
+		route-method exe
+		route-delay 2
+		auth-user-pass
+		cipher none
+		auth none
+		http-proxy-retry
+		# If squid is not working try to install Privoxy in your vps
+		http-proxy $MYIP 8020
+		http-proxy-option CUSTOM-HEADER ""
+		http-proxy-option CUSTOM-HEADER "POST https://viber.com HTTP/1.0"
+		http-proxy-option CUSTOM-HEADER "Connection: Keep-Alive"
+		http-proxy-option CUSTOM-HEADER "Proxy-Connection: Keep-Alive"
+		## Uncomment below if you like to do auto-login in mobile
+		#<auth-user-pass>
+		#your_username
+		#your_password
+		#</auth-user-pass>
+		
+		END
+		echo "<ca>" >> /home/vps/public_html/client.ovpn
+		cat /etc/openvpn/ca.crt >> /home/vps/public_html/client.ovpn
+		echo "</ca>" >> /home/vps/public_html/client.ovpn
+
+		cat > /home/vps/public_html/clientssl.ovpn <<-END
+		# Created by reputation aka Hiratechi
+		# TEAM Epiphany | www.pinoythread.com
+		# Discord Group : https://discord.gg/EHq4XjH
+		# RULES [ NO TORRENT | NO DDOS | NO BULLSHIT PLS ]
+		client
+		dev tun
+		proto tcp
+		remote 127.0.0.1 1153
+		route $MYIP 255.255.255.255 net_gateway
+		persist-key
+		persist-tun
+		pull
+		resolv-retry infinite
+		nobind
+		user nobody
+		comp-lzo
+		remote-cert-tls server
+		verb 3
+		mute 2
+		connect-retry 5
+		connect-retry-max 8020
+		mute-replay-warnings
+		redirect-gateway def1
+		script-security 2
+		auth-user-pass
+		cipher none
+		auth none
+		## Uncomment below if you like to do auto-login in mobile
+		#<auth-user-pass>
+		#your_username
+		#your_password
+		#</auth-user-pass>
+		
+		END
+		echo "<ca>" >> /home/vps/public_html/clientssl.ovpn
+		cat /etc/openvpn/ca.crt >> /home/vps/public_html/clientssl.ovpn
+		echo "</ca>" >> /home/vps/public_html/clientssl.ovpn
+		cd /home/vps/public_html
+		rm -f openvpn.zip
+		zip openvpn.zip client.ovpn clientssl.ovpn stunnel.conf
+		clear
+		echo "OVPN files updated! Download your ovpn file from http://$MYIP/#configs"
+		echo "Remote proxy was patched successfully updated in your ovpn from VPS!"
+		sleep 5
+		;;
+		4)
+		clear
+		exit
+		;;
+	esac
+done
+cd
+
