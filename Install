@@ -22,6 +22,7 @@ do
 	echo " "
 	echo "To install this VPN service,"
 	echo "choose your own VPS Provider first"
+	echo "Other VPS Provider will be added here sooner!"
 	echo " "
 	echo "    [ MENU ]"
 	echo "1. Digital Ocean"
