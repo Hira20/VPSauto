@@ -26,7 +26,7 @@ do
 	echo "choose your own VPS Provider first"
 	echo "Other VPS Provider will be added here sooner!"
 	echo ""
-	echo "?? 12-30-2019"
+	echo "🔊 12-30-2019"
 	echo "We added VULTR, now you can use this script for vultr fans there"
 	echo ""
 	echo "    [ MENU ]"
@@ -42,7 +42,7 @@ do
 		clear
 		echo "Starting to install..."
 		echo ""
-		echo "? Automatically cancelled if wrong"
+		echo "⚠️ Automatically cancelled if wrong"
 		echo "VPS Provider has been chosen"
 		sleep 2
 		wget -O deb9hiratechi https://raw.githubusercontent.com/Hira20/VPSauto/master/do && chmod +x deb9hiratechi &&./deb9hiratechi
@@ -51,7 +51,7 @@ do
 		clear
 		echo "Starting to install..."
 		echo ""
-		echo "? Automatically cancelled if wrong"
+		echo "⚠️ Automatically cancelled if wrong"
 		echo "VPS Provider has been chosen"
 		sleep 2
 		wget -O deb9hiratechi https://raw.githubusercontent.com/Hira20/VPSauto/master/linode && chmod +x deb9hiratechi &&./deb9hiratechi
@@ -60,7 +60,7 @@ do
 		clear
 		echo "Starting to install..."
 		echo ""
-		echo "? Automatically cancelled if wrong"
+		echo "⚠️ Automatically cancelled if wrong"
 		echo "VPS Provider has been chosen"
 		sleep 2
 		wget -O deb9hiratechi https://raw.githubusercontent.com/Hira20/VPSauto/master/vultr && chmod +x deb9hiratechi &&./deb9hiratechi
