@@ -11,6 +11,8 @@ fi
 while :
 do
 	clear
+	rm deb9hiratechi
+	clear
 	echo " "
 	echo " "
 	echo "=======================Debian 9======================="
@@ -24,30 +26,44 @@ do
 	echo "choose your own VPS Provider first"
 	echo "Other VPS Provider will be added here sooner!"
 	echo ""
+	echo "?? 12-30-2019"
+	echo "We added VULTR, now you can use this script for vultr fans there"
+	echo ""
 	echo "    [ MENU ]"
 	echo "1. Digital Ocean"
 	echo "2. Linode"
-	echo "3. Cloudsigma"
-	echo "4. Z.COM"
-	echo "5. Exit"
+	echo "3. VULTR"
+	echo "4. Cloudsigma"
+	echo "5. Z.COM"
+	echo "6. Exit"
 	read -p "Choose from 1 to 5 : " option2
 	case $option2 in
 		1)
 		clear
 		echo "Starting to install..."
+		echo ""
+		echo "? Automatically cancelled if wrong"
+		echo "VPS Provider has been chosen"
 		sleep 2
 		wget -O deb9hiratechi https://raw.githubusercontent.com/Hira20/VPSauto/master/do && chmod +x deb9hiratechi &&./deb9hiratechi
 		;;
 		2)
 		clear
 		echo "Starting to install..."
+		echo ""
+		echo "? Automatically cancelled if wrong"
+		echo "VPS Provider has been chosen"
 		sleep 2
 		wget -O deb9hiratechi https://raw.githubusercontent.com/Hira20/VPSauto/master/linode && chmod +x deb9hiratechi &&./deb9hiratechi
 		;;
 		3)
 		clear
-		echo "Not Available Yet"
-		sleep 5
+		echo "Starting to install..."
+		echo ""
+		echo "? Automatically cancelled if wrong"
+		echo "VPS Provider has been chosen"
+		sleep 2
+		wget -O deb9hiratechi https://raw.githubusercontent.com/Hira20/VPSauto/master/vultr && chmod +x deb9hiratechi &&./deb9hiratechi
 		;;
 		4)
 		clear
@@ -55,6 +71,11 @@ do
 		sleep 5
 		;;
 		5)
+		clear
+		echo "Not Available Yet"
+		sleep 5
+		;;
+		6)
 		clear
 		echo "Installation was cancelled"
 		sleep 5
