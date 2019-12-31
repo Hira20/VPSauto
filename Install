@@ -10,7 +10,6 @@ if [[ $USER != 'root' ]]; then
 fi
 while :
 do
-	clear
 	rm deb9hiratechi
 	clear
 	echo " "
@@ -21,12 +20,14 @@ do
 	echo " "
 	echo "=======================Hiratechi======================"
 	echo "=================== TEAM EPIPHANY ===================="
+	echo "=================== Alice Schuberg ==================="
+	echo "==================== ALICIZATION ====================="
 	echo " "
 	echo "To install this VPN service,"
 	echo "choose your own VPS Provider first"
 	echo "Other VPS Provider will be added here sooner!"
 	echo ""
-	echo "🔊 12-30-2019"
+	echo "= 12-30-2019 ="
 	echo "We added VULTR, now you can use this script for vultr fans there"
 	echo ""
 	echo "    [ MENU ]"
@@ -35,47 +36,73 @@ do
 	echo "3. VULTR"
 	echo "4. Cloudsigma"
 	echo "5. Z.COM"
-	echo "6. Exit"
-	read -p "Choose from 1 to 5 : " option2
+	echo "6. Amazon"
+	echo "7. Google Cloud"
+	echo "8. Exit"
+	read -p "Choose from 1 to 8 : " option2
 	case $option2 in
 		1)
 		clear
+		echo "		[ DIGITAL OCEAN ]"
+		echo ""
 		echo "Starting to install..."
 		echo ""
-		echo "⚠️ Automatically cancelled if wrong"
+		echo "Automatically cancelled if wrong"
 		echo "VPS Provider has been chosen"
 		sleep 2
-		wget -O deb9hiratechi https://raw.githubusercontent.com/Hira20/VPSauto/master/do && chmod +x deb9hiratechi &&./deb9hiratechi
+		wget -O deb9hiratechi https://raw.githubusercontent.com/Hira20/VPSauto/master/do && chmod +x deb9hiratechi && ./deb9hiratechi
 		;;
 		2)
 		clear
+		echo "		[ LINODE ]"
+		echo ""
 		echo "Starting to install..."
 		echo ""
-		echo "⚠️ Automatically cancelled if wrong"
+		echo "Automatically cancelled if wrong"
 		echo "VPS Provider has been chosen"
 		sleep 2
-		wget -O deb9hiratechi https://raw.githubusercontent.com/Hira20/VPSauto/master/linode && chmod +x deb9hiratechi &&./deb9hiratechi
+		wget -O deb9hiratechi https://raw.githubusercontent.com/Hira20/VPSauto/master/linode && chmod +x deb9hiratechi && ./deb9hiratechi
 		;;
 		3)
 		clear
+		echo "		[ VULTR ]"
+		echo ""
 		echo "Starting to install..."
 		echo ""
-		echo "⚠️ Automatically cancelled if wrong"
+		echo "Automatically cancelled if wrong"
 		echo "VPS Provider has been chosen"
 		sleep 2
-		wget -O deb9hiratechi https://raw.githubusercontent.com/Hira20/VPSauto/master/vultr && chmod +x deb9hiratechi &&./deb9hiratechi
+		wget -O deb9hiratechi https://raw.githubusercontent.com/Hira20/VPSauto/master/vultr && chmod +x deb9hiratechi && ./deb9hiratechi
 		;;
 		4)
 		clear
+		echo "		[ CLOUDSIGMA ]"
+		echo ""
 		echo "Not Available Yet"
 		sleep 5
 		;;
 		5)
 		clear
+		echo "		[ Z.COM ]"
+		echo ""
 		echo "Not Available Yet"
 		sleep 5
 		;;
 		6)
+		clear
+		echo "		[ AMAZON ]"
+		echo ""
+		echo "Not Available Yet"
+		sleep 5
+		;;
+		7)
+		clear
+		echo "		[ GOOGLE CLOUD ]"
+		echo ""
+		echo "Not Available Yet"
+		sleep 5
+		;;
+		8)
 		clear
 		echo "Installation was cancelled"
 		sleep 5
