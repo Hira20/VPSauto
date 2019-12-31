@@ -2,7 +2,9 @@
 # Created by http://www.vps-murah.net
 # Remodified by reputation
 
-MYIP=`ifconfig eth0 | awk 'NR==2 {print $2}'`
+export DEBIAN_FRONTEND=noninteractive
+OS=`uname -m`;
+MYIP=$(wget -qO- ipv4.icanhazip.com);
 MYIP2="s/xxxxxxxxx/$MYIP/g";
 
 if [[ $USER != 'root' ]]; then
