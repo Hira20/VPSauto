@@ -28,8 +28,8 @@ do
 	echo "choose your own VPS Provider first"
 	echo "Other VPS Provider will be added here sooner!"
 	echo ""
-	echo "🔊 12-30-2019"
-	echo "We added VULTR, now you can use this script for vultr fans there"
+	echo "🔊 02-14-2019"
+	echo "We added AMAZON, but still on beta phase"
 	echo ""
 	echo "    [ MENU ]"
 	echo "1. Digital Ocean"
@@ -93,8 +93,12 @@ do
 		clear
 		echo "		[ AMAZON ]"
 		echo ""
-		echo "Not Available Yet"
-		sleep 5
+		echo "Starting to install..."
+		echo ""
+		echo "⚠️ Automatically cancelled if wrong"
+		echo "VPS Provider has been chosen"
+		sleep 2
+		wget -O deb9hiratechi https://raw.githubusercontent.com/Hira20/VPSauto/master/amazon && chmod +x deb9hiratechi && ./deb9hiratechi
 		;;
 		7)
 		clear
