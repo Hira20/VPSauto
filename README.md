@@ -14,7 +14,7 @@ Fail2Ban<br>
 Anti-DDOS<br>
 Antitorrent<br>
 Customized Homepage<br>
-Demo homepage right 👉 <a href="https://bit.ly/2XtmzQW" target="_blank">click here</a><br>
+Demo homepage right 👉 <a href="https://web.archive.org/web/20190718113755/http://178.128.87.28/" target="_blank">click here</a><br>
 Customized Squid error page<br>
 Addons: Privoxy & DNS Squid<br><br>
 <p align="center"><big>Run this command</big>
